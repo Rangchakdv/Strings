@@ -1,1 +1,37 @@
 
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+
+string count_sort(string str)
+{
+    vector<int>freq(26,0);
+     //Storing the frequency of every character in the string
+    for(int i = 0;i<str.length();i++)
+    {
+        int index = str[i] - 'a';
+        freq[index]++;
+    }
+
+    //Create our sorted string
+    int j = 0;
+    for(int i = 0;i<26;i++)
+    {
+        while(freq[i]--)
+        {
+            str[j++] = i +'a';
+        }
+    }
+    return str;
+}
+
+int main()
+{
+    string str;
+    cout<<"Enter your string: ";
+    cin>>str;
+
+    cout<<"The string sorted in lexicographical order is: "+count_sort(str)<<endl;
+    return 0;
+}
